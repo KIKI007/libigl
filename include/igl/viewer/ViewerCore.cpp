@@ -177,7 +177,7 @@ IGL_INLINE void igl::viewer::ViewerCore::draw(
   GLint texture_factori       = opengl.shader_mesh.uniform("texture_factor");
 
   glUniform1f(specular_exponenti, shininess);
-  Vector3f rev_light = -1.*light_position;
+  Eigen::Vector3f rev_light = -1.*light_position;
   glUniform3fv(light_position_worldi, 1, rev_light.data());
   glUniform1f(lighting_factori, lighting_factor); // enables lighting
   glUniform4f(fixed_colori, 0.0, 0.0, 0.0, 0.0);

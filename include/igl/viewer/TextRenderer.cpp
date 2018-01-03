@@ -88,7 +88,7 @@ IGL_INLINE void igl::viewer::TextRenderer::DrawText(
   nvgFontSize(ctx, 16*mPixelRatio);
   nvgFontFace(ctx, "sans");
   nvgTextAlign(ctx, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
-  nvgFillColor(ctx, nvgRGBA(10,10,250,255));
+  nvgFillColor(ctx, nvgRGBA(139,0,0,255));
   nvgText(ctx, coord[0]/mPixelRatio, (viewport[3] - coord[1])/mPixelRatio, text.c_str(), NULL);
 }
 #endif
