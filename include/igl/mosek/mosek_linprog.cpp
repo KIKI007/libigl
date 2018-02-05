@@ -61,7 +61,7 @@ IGL_INLINE bool igl::mosek::mosek_linprog(
   // Create the optimization task
   mosek_guarded(MSK_maketask(env,m,n,&task));
   // no threads
-  mosek_guarded(MSK_putintparam(task,MSK_IPAR_NUM_THREADS,MSK_ON));
+  mosek_guarded(MSK_putintparam(task,MSK_IPAR_NUM_THREADS,1));
   if(m>0)
   {
     // Append 'm' empty constraints, the constrainst will initially have no
@@ -79,11 +79,9 @@ IGL_INLINE bool igl::mosek::mosek_linprog(
     {
       if(lxj == uxj)
       {
-        //k = MSK_BK_RA;
-        k = MSK_BK_FX;
-      }else{
         k = MSK_BK_RA;
-        //k = MSK_BK_FX;
+      }else{
+        k = MSK_BK_FX;
       }
     }else if(isfinite(lxj))
     {
