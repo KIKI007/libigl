@@ -154,7 +154,10 @@ IGL_INLINE void igl::viewer::ViewerData::set_colors(const Eigen::MatrixXd &C)
     set_face_based(true);
     for (unsigned i=0;i<F_material_diffuse.rows();++i)
     {
-      F_material_diffuse.row(i) << C.row(i),1;
+      if(C.cols() == 3)
+        F_material_diffuse.row(i) << C.row(i),1;
+      else
+        F_material_diffuse.row(i) << C.row(i);
     }
     F_material_ambient = ambient(F_material_diffuse);
     F_material_specular = specular(F_material_diffuse);
